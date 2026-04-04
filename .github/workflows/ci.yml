@@ -29,6 +29,7 @@ jobs:
         with:
           debug: true
 
-      - name: Print URL
+      - if: github.event.action != 'closed'
+        name: Print URL
         shell: bash
         run: echo "DATABASE_URL=${{ fromJson(steps.apercu.outputs.database_connections).app.url }}"
