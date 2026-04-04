@@ -1,0 +1,16 @@
+databases:
+  app:
+    source:
+      provider: neon
+      neon:
+        project_id: ${{ NEON_PROJECT_ID }}
+        api_key: ${{ NEON_API_KEY }}
+        parent_branch: production
+        preview_branch: pr-${{ PR_NUMBER }}
+      migration:
+        local_folder: src/main/resources/db/migration/prod
+        work_dir: /flyway/sql
+        runner: flyway/flyway
+        command:
+          - -url=jdbc:postgresql://${{PREVIEW_HOST}}:${{PREVIEW_PORT}}/${{PREVIEW_DATABASE}}?user=${{PREVIEW_USER}}&password=${{PREVIEW_PASSWORD}}
+          - migrate
