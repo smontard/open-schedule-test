@@ -20,9 +20,14 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
         
       - name: Apercu
+        id: apercu
         uses: dev-celer/apercu-action@dev
         env:
           NEON_PROJECT_ID: ${{ secrets.project_id }}
           NEON_API_KEY: ${{ secrets.api_key }}
         with:
           debug: true
+
+      - name: Print URL
+        shell: bash
+        run: echo ${{ fromJson(steps.apercu.outputs.database_connections).app.url }}
