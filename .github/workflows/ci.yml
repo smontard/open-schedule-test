@@ -6,9 +6,15 @@ on:
 
 jobs:
   preview:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
         
       - name: Apercu
         uses: dev-celer/apercu-action@v0.1.0
