@@ -5,15 +5,16 @@ on:
     branches: [main]
 
 jobs:
-  runs-on: ubuntu-latest
-  steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      
-    - name: Apercu
-      uses: dev-celer/apercu-action@v0.1.0
-      env:
-        NEON_PROJECT_ID: ${{ secrets.project_id }}
-        NEON_API_KEY: ${{ secrets.api_key }}
-      with:
-        debug: true
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Apercu
+        uses: dev-celer/apercu-action@v0.1.0
+        env:
+          NEON_PROJECT_ID: ${{ secrets.project_id }}
+          NEON_API_KEY: ${{ secrets.api_key }}
+        with:
+          debug: true
