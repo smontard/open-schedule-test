@@ -30,4 +30,4 @@ jobs:
 
       - name: Print URL
         shell: bash
-        run: echo ${{ steps.apercu.outputs.database_connections }}
+        run: echo "DATABASE_URL=${{ fromJson(steps.apercu.outputs.database_connections).app.url }}"
