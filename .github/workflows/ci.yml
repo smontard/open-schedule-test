@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v4
         
       - name: Apercu
-        uses: dev-celer/apercu-action@v0.1.0
+        uses: dev-celer/apercu-action
         env:
           NEON_PROJECT_ID: ${{ secrets.project_id }}
           NEON_API_KEY: ${{ secrets.api_key }}
