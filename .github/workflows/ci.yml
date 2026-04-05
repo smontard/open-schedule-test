@@ -22,7 +22,7 @@ jobs:
         
       - name: Apercu
         id: apercu
-        uses: dev-celer/apercu-action@dev
+        uses: dev-celer/apercu-pr-action@dev
         env:
           NEON_PROJECT_ID: ${{ secrets.project_id }}
           NEON_API_KEY: ${{ secrets.api_key }}
