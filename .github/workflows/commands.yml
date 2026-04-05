@@ -2,7 +2,7 @@ name: Commands
 
 on:
   issue_comment:
-    types: created
+    types: [created]
 
 env:
   DOCKER_API_VERSION: "1.44"
