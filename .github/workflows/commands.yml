@@ -1,0 +1,26 @@
+name: Commands
+
+on:
+  issue_comment:
+    types: created
+
+env:
+  DOCKER_API_VERSION: "1.44"
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+        
+      - name: Apercu
+        uses: dev-celer/apercu-commands@dev
+        env:
+          NEON_PROJECT_ID: ${{ secrets.project_id }}
+          NEON_API_KEY: ${{ secrets.api_key }}
