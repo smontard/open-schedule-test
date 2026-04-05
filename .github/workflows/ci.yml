@@ -26,8 +26,6 @@ jobs:
         env:
           NEON_PROJECT_ID: ${{ secrets.project_id }}
           NEON_API_KEY: ${{ secrets.api_key }}
-        with:
-          debug: true
 
       - if: github.event.action != 'closed'
         name: Print URL
