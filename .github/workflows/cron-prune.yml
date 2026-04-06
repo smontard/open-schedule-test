@@ -1,0 +1,19 @@
+name: prune
+
+on:
+  schedule:
+    - cron: '0 16 * * *'
+  workflow_dispatch:
+
+jobs:
+  prune:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Apercu Prune
+        uses: dev-celer/apercu-prune@dev
+        env:
+          NEON_PROJECT_ID: ${{ secrets.project_id }}
+          NEON_API_KEY: ${{ secrets.api_key }}
