@@ -8,11 +8,12 @@ databases:
         parent_branch: production
         preview_branch: pr-${{ PR_NUMBER }}
     migration:
-      local_folder: src/main/resources/db/migration/prod
+      local_dir: src/main/resources/db/migration/prod
       work_dir: /flyway/sql
-      runner: flyway/flyway
+      image: flyway/flyway
       command:
         - -url=jdbc:postgresql://${{PREVIEW_HOST}}:${{PREVIEW_PORT}}/${{PREVIEW_DATABASE}}?user=${{PREVIEW_USER}}&password=${{PREVIEW_PASSWORD}}
         - migrate
     seed:
-      - "seeds"
+      - path: "seeds"
+        seed_on: create
