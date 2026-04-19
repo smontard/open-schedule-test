@@ -13,7 +13,7 @@ databases:
       image: flyway/flyway
       command:
         - -url=jdbc:postgresql://${{PREVIEW_HOST}}:${{PREVIEW_PORT}}/${{PREVIEW_DATABASE}}?user=${{PREVIEW_USER}}&password=${{PREVIEW_PASSWORD}}
-        - baselineOnMigrate=true
+        - -baselineOnMigrate=true
         - migrate
     seed:
       - path: "seeds"
